@@ -1,0 +1,12 @@
+<!-- templates/success_page.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Appointment Success{% endblock %}
+
+{% block header %}Appointment Successful{% endblock %}
+
+{% block content %}
+    <p>Your appointment with {{ appointment.subservice.name }} on {{ appointment.date }} at {{ appointment.time }} has been successfully booked.</p>
+    <!-- Add any additional information or links here -->
+{% endblock %}
