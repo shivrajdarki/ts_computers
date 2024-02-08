@@ -7,7 +7,26 @@
 {% block content %}
     <form method="post" action="">
         {% csrf_token %}
-        {{ form.as_p }}
+        
+        <label for="id_subservice">Select Subservice:</label>
+        <select name="subservice" id="id_subservice">
+            {% for subservice in subservices %}
+                <option value="{{ subservice.id }}">{{ subservice.name }} - {{ subservice.description }}</option>
+            {% endfor %}
+        </select>
+        
+        <label for="id_name">Name:</label>
+        <input type="text" name="name" id="id_name" required>
+        
+        <label for="id_phone">Phone:</label>
+        <input type="text" name="phone" id="id_phone" required>
+        
+        <label for="id_date">Date:</label>
+        <input type="date" name="date" id="id_date" placeholder="YYYY-MM-DD" required>
+        
+        <label for="id_time">Time:</label>
+        <input type="time" name="time" id="id_time" placeholder="HH:MM" required>
+        
         <input type="submit" value="Book Appointment">
     </form>
 {% endblock %}
