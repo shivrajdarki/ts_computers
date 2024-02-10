@@ -3,9 +3,102 @@
 {% extends 'base.html' %}
 
 {% block title %}Home{% endblock %}
+{% load static %} 
 
 {% block header %}Welcome to My Cyber Cafe{% endblock %}
 
 {% block content %}
-    <p>Explore our services and make an appointment!</p>
+
+
+<section class="Container">
+    <img src="{% static 'image/back1.webp' %}" alt="" class="background-img">
+    <div class="content1">
+        <div class="qoute">
+            <h1>Dependable Tech Solutions</h1>
+        </div>
+        <p class="para1">TS Computers is an established and reliable Tech Services firm. We are glad to provide you
+            with
+            trustworthy top-notch Tech services.</p>
+        <button class="btn-1"><a href="{% url 'about_us' %}"> Read more  </a> </button>
+    </div>
+
+</section>
+
+
+<section class="Container2">
+    <div class="left-content">
+        <img src="{% static 'image/print.webp' %}" alt="" height="500px" width="700px">
+    </div>
+    <div class="right-content">
+        <h1 class="why">Why people choose the Services and solutions by TS Computers?</h1>
+        <div class="grid-right">
+            <div class="one">
+                <h1>Advanced Technologies</h1>
+                <p>We use the latest in technically advanced access control systems to serve you.</p>
+            </div>
+            <div class="one">
+                <h1>Total Security Approach</h1>
+                <p>Our qualified team provides a complete security system for your home or business.</p>
+            </div>
+            <div class="one">
+                <h1>Innovative Working Technologies </h1>
+                <p>We provide only the most reliable Services based on the latest modern technical ways.</p>
+                <button class="btn-1">Read more</button>
+            </div>
+            <div class="one">
+                <h1>Outstanding Customer Service </h1>
+                <p>The exceptional level of service and attention to detail are the key principles of our work.</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="Container3">
+    <div class="head">
+        <h1>We offer fast, professional and
+            exceptional services.</h1>
+        <p class="para2">Take a look at the list of our featured solutions</p>
+    </div>
+    {% for service in services %}
+    <div class="cards">
+        <div class="card">
+            <a href="{% url 'sub_service_form' service.id %}">
+            {% if service.photo %}
+            <img src="{{ service.photo.url }}" alt="">
+            {% endif %}
+            <h2>{{ service.name }}</h2>
+            <p>{{ service.description }}</p>
+        </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+
+    {% block footer %}
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+    <!-- <p>Explore our services and make an appointment!</p>
+    
+    <h2>Available Services:</h2>
+    <ul>
+        {% for service in services %}
+            <li>
+                <strong>{{ service.name }}</strong><br>
+                Description: {{ service.description }}<br>
+                {% if service.photo %}
+                    <img src="{{ service.photo.url }}" alt="{{ service.name }} Photo" style="max-width: 200px; max-height: 200px;">
+                {% endif %}
+                <a href="{% url 'sub_service_form' service.id %}">Book Now</a>
+            </li>
+        {% endfor %}
+    </ul>
