@@ -32,13 +32,14 @@ body {
 
 .navbar {
     background-color: #fff;
-    overflow: hidden;
     display: flex;
-    position: relative;
+    position: fixed;
+    top: 0;
     justify-content: center;
     padding-top: 10px;
     padding-bottom: 10px;
-
+    width: 100%;
+    z-index: 9999;
 }
 
 .navbar a {
@@ -181,9 +182,85 @@ body {
     margin-right: 14px;
     font-size: 30px;
 }
-@media screen and (max-width: 600px) {
-    .navbar {
-        flex-direction: column;
-        align-items: center;
-    }
+.icons a{
+    color: #fff;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.about{
+    display: flex;
+    justify-content: space-around;
+}
+.about-content{
+    width: 600px;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 5px 8px 28px rgba(23, 23, 36, 0.1);
+}
+#about-section{
+    margin-top: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
+    height: 60vh;
+}
+#about-section h1{
+    margin: 10px auto;
+    width: 250px;
+    margin-bottom: 30px;
+}
+
+
+.contact-section{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+.contact-left{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+.contact-left-title h2{
+    font-weight: 600;
+    color: orange;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.contact-left-title hr{
+    border: none;
+    width: 120px;
+    height: 5px;
+    background-color:orange ;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.input{
+    width: 400px;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding-left: 25px;
+    font-weight: 500;
+    color:black;
+    background-color:rgb(234, 239, 244);
+    border-radius: 50px;
+    font-size: 20px;
+}
+textarea{
+    padding: 12px;
+}
+.contact-btn{
+    background-color: orange;
+    padding: 14px 25px;
+    border-radius: 20px;
+    color: white;
+    border: none;
+    font-size: 16px;
 }
