@@ -26,7 +26,6 @@ def sub_service_form(request, service_id):
             date = form.cleaned_data['date']
             time = form.cleaned_data['time']
 
-            # Fetch the SubService instance using the selected option
             subservice = SubService.objects.get(pk=subservice_instance.id)
 
             appointment = Appointment.objects.create(

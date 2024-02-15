@@ -2,11 +2,19 @@
 
 {% extends 'base.html' %}
 
-{% block title %}Appointment Success{% endblock %}
+{% block title %}Success{% endblock %}
 
 {% block header %}Appointment Successful{% endblock %}
 
 {% block content %}
-    <p>Your appointment with {{ appointment.subservice.name }} on {{ appointment.date }} at {{ appointment.time }} has been successfully booked.</p>
-    <!-- Add any additional information or links here -->
+    <p>Your appointment has been successfully booked!</p>
+    <p>Details:</p>
+    <ul>
+        <li>Service: {{ appointment.service.name }}</li>
+        <li>Subservice: {{ appointment.subservice.name }}</li>
+        <li>Name: {{ appointment.name }}</li>
+        <li>Phone: {{ appointment.phone }}</li>
+        <li>Date: {{ appointment.date }}</li>
+        <li>Time: {{ appointment.time }}</li>
+    </ul>
 {% endblock %}

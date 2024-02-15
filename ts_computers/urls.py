@@ -6,10 +6,6 @@ from myapp.views import home, sub_service_form, about_us, contact_us
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about-us/', about_us, name='about_us'),
