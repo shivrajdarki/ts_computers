@@ -18,7 +18,7 @@ html,body{
 header{
     width: 100vw;
     height: 100vh;
-    background-image: url('images/b2.avif');
+    background-image: url('static/images/b2.avif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
