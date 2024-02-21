@@ -8,11 +8,9 @@ from .forms import ContactForm
 
 
 def home(request):
-    return render(request, 'home.html')
-
-def service_list(request):
     services = Service.objects.all()
-    return render(request, 'service_list.html', {'services': services})
+    return render(request, 'home.html', {'services': services})
+
 
 def sub_service_form(request, service_id):
     service = Service.objects.get(pk=service_id)
@@ -28,7 +26,6 @@ def sub_service_form(request, service_id):
             date = form.cleaned_data['date']
             time = form.cleaned_data['time']
 
-            # Fetch the SubService instance using the selected option
             subservice = SubService.objects.get(pk=subservice_instance.id)
 
             appointment = Appointment.objects.create(

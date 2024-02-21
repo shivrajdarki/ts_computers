@@ -3,12 +3,13 @@
 {% block title %}Contact Us{% endblock %}
 
 {% block header %}Contact Us{% endblock %}
+{% load static %} 
 
 {% block content %}
     <form method="post" action="">
-        {% csrf_token %}
         
-        <label for="id_name">Name:</label>
+        
+        <!-- <label for="id_name">Name:</label>
         <input type="text" name="name" id="id_name" required>
         
         <label for="id_email">Email:</label>
@@ -17,6 +18,47 @@
         <label for="id_question">Question:</label>
         <textarea name="question" id="id_question" required></textarea>
         
-        <input type="submit" value="Send Message">
+        <input type="submit" value="Send Message"> -->
+
+
+
+
+        {% csrf_token %}
+        <section class="contact-section">
+            <form action="" class="contact-left">
+
+                <div class="contact-left-title">
+                    <h2>Get in touch</h2>
+                    <hr>
+                </div>
+                <input type="text" name="name" id="id_name" required>
+                <label for="email">Email:</label>
+                <textarea name="message" id="id_question" cols="30" rows="10" placeholder="Your message" class="input"></textarea>
+                <button type="submit" class="contact-btn">Submit</button>
+            </form>
+            <div class="contact-right">
+                <img src="{% static 'images/contact.avif'%}" alt="">
+            </div>
+        </section>
+
+
+
+        <section class="contact-section">
+            <form action="" class="contact-left">
+                <div class="contact-left-title">
+                    <h2>Get in touch</h2>
+                    <hr>
+                </div>
+                <input type="text" name="name" placeholder="Your Name" class="input" required   id="id_name">
+                <input type="email" name="email" placeholder="Your email" class="input" required>
+                <textarea name="message" id="" cols="30" rows="10" placeholder="Your message" class="input"></textarea>
+                <button type="submit" class="contact-btn">Submit</button>
+            </form>
+            <div class="contact-right">
+                <img src="images/contact.avif" alt="">
+            </div>
+
+
+
     </form>
 {% endblock %}

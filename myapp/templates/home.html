@@ -3,12 +3,15 @@
 {% extends 'base.html' %}
 
 {% block title %}Home{% endblock %}
+{% load static %} 
 
 {% block header %}Welcome to My Cyber Cafe{% endblock %}
 
 {% block content %}
+
+
 <section class="Container">
-    <img src="static/images/back1.webp" alt="" class="background-img">
+    <img src="{% static 'image/back1.webp' %}" alt="" class="background-img">
     <div class="content1">
         <div class="qoute">
             <h1>Dependable Tech Solutions</h1>
@@ -16,13 +19,15 @@
         <p class="para1">TS Computers is an established and reliable Tech Services firm. We are glad to provide you
             with
             trustworthy top-notch Tech services.</p>
-        <button class="btn-1">Read more</button>
+        <button class="btn-1"><a href="{% url 'about_us' %}"> Read more  </a> </button>
     </div>
 
 </section>
+
+
 <section class="Container2">
     <div class="left-content">
-        <img src="static/images/print.webp" alt="" height="500px" width="700px">
+        <img src="{% static 'image/print.webp' %}" alt="" height="500px" width="700px">
     </div>
     <div class="right-content">
         <h1 class="why">Why people choose the Services and solutions by TS Computers?</h1>
@@ -48,82 +53,52 @@
     </div>
 
 </section>
+
 <section class="Container3">
     <div class="head">
         <h1>We offer fast, professional and
             exceptional services.</h1>
         <p class="para2">Take a look at the list of our featured solutions</p>
     </div>
+    {% for service in services %}
     <div class="cards">
         <div class="card">
-            <img src="static/images/rev-removebg-preview.png" alt="">
-            <h2>Revenue Services</h2>
-            <p>Revenue Department deals with various subjects like Land
-                Revenue,Agricultural Tenancy,Communidades,Stamps,Land Acquisitions,Devasthan Regulations,Disaster
-                Management,Land Use among other subjects.</p>
+            <a href="{% url 'sub_service_form' service.id %}">
+            {% if service.photo %}
+            <img src="{{ service.photo.url }}" alt="">
+            {% endif %}
+            <h2>{{ service.name }}</h2>
+            <p>{{ service.description }}</p>
+        </a>
         </div>
-        <div class="card">
-            <img src="static/images/download (1).png" alt="">
-            <h2>EPFO Services</h2>
-            <p>Users can check their PF balance,Raise claim,Apply for Scheme Certificate,Apply for UAN, Seed UAN
-                with Aadhaar,Check claim status.</p>
-        </div>
-        <div class="card">
-            <img src="static/images/addhar-removebg-preview.png" alt="">
-            <h2>e-Adhaar Services</h2>
-            <p>Recently enrolled for Aadhaar? Check if your Aadhaar is generated. In case yourhave or updated
-                updated at an Enrolment/Update center you can check the Update Address here too.</p>
-        </div>
-        <div class="card">
-            <img src="static/images/election.png" alt="">
-            <h2>Election Services</h2>
-            <p>A Voter ID Card, also known as the Electors Photo Identity Card (EPIC) is a photo identity card that
-                is issued by the Election Commission of India to all individuals who are eligible to vote. </p>
-        </div>
-        <div class="card">
-            <img src="static/images/tourism.jpg" alt="">
-            <h2>Tourism</h2>
-            <p>RGrab Cheap Tickets from 500+ Airlines. Book Your Flights Today & Save. Experience Fast, Easy &
-                Secure Flight Booking on CheapOair®. Book Now! Book By Phone. Easy Booking.
-                Cheap Round Trip Flights ·</p>
-        </div>
-        <div class="card">
-            <img src="images/income.jpg" alt="">
-            <h2>Income Tax</h2>
-            <p>Get various Income Tax (IT) challans provided by Income Tax Department, Department of Revenue. Users
-                can download challans for depositing advance tax, self assessment tax, tax on regular assessment
-                .</p>
-        </div>
-        <div class="card">
-            <img src="static/images/finanace.jpg" alt="">
-            <h2>Financial Services</h2>
-            <p>Smartest way to send money overseas. Better alternative to banks. 24/7 customer support. Transparent
-                & no hidden fees. Enjoy attractive FX rates. Open your account today! Super Easy & Quick. Save on
-                Each Transfer. 1000's of Happy Customers.</p>
-        </div>
-        <div class="card">
-            <img src="static/images/bill.jpg" alt="">
-            <h2>Bharat Pay</h2>
-            <p>Bharat Bill Payment Service (BBPS), is the best way to pay your bills in a secure way. No longer wait
-                on the queue, just make your transaction through BBPS.
-            </p>
-        </div>
-        <div class="card">
-            <img src="static/images/sacn.jpg" alt="">
-            <h2>Insurance Services</h2>
-            <p>Life insurance is something most people have at least heard of, but not everyone understands who
-                should get it and what it’s actually for. Contrary to what you might expect, life insurance isn’t
-                just for the elderly.</p>
-        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
 
-    </div>
-</section>
-<footer class="footer">
-    <div class="icons">
-        <i class="fa-brands fa-instagram"></i>
-        <i class="fa-brands fa-whatsapp"></i>
-        <i class="fa-brands fa-square-twitter"></i>
-        <i class="fa-brands fa-facebook"></i>
-    </div>
-</footer>
+    {% block footer %}
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+    <!-- <p>Explore our services and make an appointment!</p>
+    
+    <h2>Available Services:</h2>
+    <ul>
+        {% for service in services %}
+            <li>
+                <strong>{{ service.name }}</strong><br>
+                Description: {{ service.description }}<br>
+                {% if service.photo %}
+                    <img src="{{ service.photo.url }}" alt="{{ service.name }} Photo" style="max-width: 200px; max-height: 200px;">
+                {% endif %}
+                <a href="{% url 'sub_service_form' service.id %}">Book Now</a>
+            </li>
+        {% endfor %}
+    </ul>
